@@ -10,12 +10,12 @@ API REST desenvolvida como exercício prático de Web Services com Spring Boot, 
 
 | Tecnologia | Versão |
 |---|---|
-| Java | 21 |
-| Spring Boot | 3.x |
+| Java | 21.0.9 |
+| Spring Boot | 4.0.1 |
 | Spring Web (REST) | — |
 | Spring Data JPA | — |
-| Hibernate | — |
-| H2 Database | — |
+| Hibernate ORM | 7.2.0.Final |
+| H2 Database | 2.4.240 |
 | Maven | — |
 
 ---
@@ -29,6 +29,16 @@ src/main/java/
 ├── services/       # Regras de negócio / camada de serviço
 └── resources/      # Controllers REST (endpoints)
 ```
+
+---
+
+## ⚙️ Profiles
+
+| Profile | Banco | Quando usar |
+|---|---|---|
+| `test` | H2 em memória | Desenvolvimento e testes (padrão ativo) |
+
+> O profile `test` é ativado automaticamente. Ao subir a aplicação, o Hibernate recria todas as tabelas e insere dados de exemplo automaticamente (seed), então a API já está populada desde o primeiro request.
 
 ---
 
@@ -99,6 +109,9 @@ Base URL: `http://localhost:8080`
       }
     }
   ],
+  "payment": {
+    "instant": "2019-06-20T21:53:07Z"
+  },
   "total": 181.0
 }
 ```
